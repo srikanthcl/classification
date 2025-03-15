@@ -7,6 +7,10 @@ model = joblib.load("model.pkl")
 
 app = FastAPI()
 
+@app.get("/")
+def home():
+    return {"message": "Model API is running!"}
+
 @app.post("/predict")
 def predict(features: list):
     prediction = model.predict([np.array(features)])
